@@ -19,9 +19,6 @@ namespace RPG.Combat
 
         Weapon currentWeapon = null;
 
-        public static string attackTriggerName = "attack";        
-        public static string stopAttackName = "stopAttack";
-
         private void Start()
         {
             EquipWeapon(defaultWeapon);
@@ -65,8 +62,8 @@ namespace RPG.Combat
 
         private void TriggerAttack()
         {
-            GetComponent<Animator>().ResetTrigger(Fighter.stopAttackName);
-            GetComponent<Animator>().SetTrigger(Fighter.attackTriggerName);
+            GetComponent<Animator>().ResetTrigger(RPGSandboxIDs.StopAttackName);
+            GetComponent<Animator>().SetTrigger(RPGSandboxIDs.AttackTriggerName);
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -81,7 +78,20 @@ namespace RPG.Combat
         {
             if (target == null) { return; }
 
-            target.TakeDamage(currentWeapon.WeaponDamage());
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            }
+            else
+            {
+                target.TakeDamage(currentWeapon.WeaponDamage());
+            }
+            
+        }
+
+        void Shoot()
+        {
+            Hit();
         }
 
         private bool GetIsInRange()
@@ -103,8 +113,8 @@ namespace RPG.Combat
 
         private void StopAttack()
         {
-            GetComponent<Animator>().SetTrigger(Fighter.stopAttackName);
-            GetComponent<Animator>().ResetTrigger(Fighter.attackTriggerName);
+            GetComponent<Animator>().SetTrigger(RPGSandboxIDs.StopAttackName);
+            GetComponent<Animator>().ResetTrigger(RPGSandboxIDs.AttackTriggerName);
         }
 
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Core;
 
 namespace RPG.Combat
 {
@@ -18,23 +19,17 @@ namespace RPG.Combat
         private float weaponDamage = 5f;
         [SerializeField]
         public float timeBetweenAttacks = 2f;
+        [SerializeField]
+        private Projectile projectile = null;
 
         [SerializeField]
         private bool isRightHanded = true;
 
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
-            Transform handTransform;
-            if (isRightHanded)
-            {
-                handTransform = rightHand; 
-            } else
-            {
-                handTransform = leftHand;
-            }
             if (weaponPrefab != null)
             {
-                Instantiate(weaponPrefab, handTransform);
+                Instantiate(weaponPrefab, GetTransform(rightHand, leftHand));
             }
 
             if (animatorOverride != null)
@@ -42,6 +37,31 @@ namespace RPG.Combat
                 animator.runtimeAnimatorController = animatorOverride;
             }
             
+        }
+
+        private Transform GetTransform(Transform rightHand, Transform leftHand)
+        {
+            Transform handTransform;
+            if (isRightHanded)
+            {
+                handTransform = rightHand;
+            }
+            else
+            {
+                handTransform = leftHand;
+            }
+            return handTransform;
+        }
+
+        public bool HasProjectile()
+        {
+            return projectile != null;
+        }
+
+        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target)
+        {
+            Projectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, leftHand).position, Quaternion.identity);
+            projectileInstance.SetTarget(target, weaponDamage);
         }
 
         public float WeaponRange()

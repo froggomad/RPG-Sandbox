@@ -56,17 +56,28 @@ namespace RPG.Movement
             GetComponent<Animator>().SetFloat("forwardSpeed", speed);
         }
 
+        [System.Serializable]
+        struct LocationData
+        {
+            public SerializableVector3 position;
+            public SerializableVector3 rotation;
+        }
+
         public object CaptureState()
         {
-            return new SerializableVector3(transform.position);
+            LocationData data = new LocationData();
+            data.position = new SerializableVector3(transform.position);
+            data.rotation = new SerializableVector3(transform.eulerAngles);
+            return data;
         }
 
         public void RestoreState(object state)
         {
+            LocationData data = (LocationData)state;
             NavMeshAgent navMesh = GetComponent<NavMeshAgent>();
             navMesh.enabled = false;
-            SerializableVector3 position = state as SerializableVector3;
-            transform.position = position.ToVector();
+            transform.position = data.position.ToVector();
+            transform.eulerAngles = data.rotation.ToVector();            
             navMesh.enabled = true;
         }
     }

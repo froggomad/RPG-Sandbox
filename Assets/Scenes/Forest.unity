@@ -297,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2884519408452795294, guid: 771256fc0831f4a65a8bdf5c159059e9, type: 3}
       propertyPath: uniqueIdentifier
-      value: 36af64c0-bb8e-4704-9b6f-3fd3e57ce484
+      value: player
       objectReference: {fileID: 0}
     - target: {fileID: 7463510774645607022, guid: 771256fc0831f4a65a8bdf5c159059e9, type: 3}
       propertyPath: m_LocalPosition.x

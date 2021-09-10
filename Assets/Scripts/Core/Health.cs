@@ -12,8 +12,9 @@ namespace RPG.Core
 
         ActionScheduler actionScheduler;
 
-        private void Start()
+        private void Awake()
         {
+            Debug.Log(Application.persistentDataPath);
             actionScheduler = GetComponent<ActionScheduler>();
         }
 
@@ -38,10 +39,9 @@ namespace RPG.Core
         private void Die()
         {
             if (isDead) return;
-
-            isDead = true;
-            GetComponent<Animator>().SetTrigger(dieTriggerName);            
             actionScheduler.CancelCurrentAction();
+            isDead = true;
+            GetComponent<Animator>().SetTrigger(dieTriggerName);
         }
 
         public object CaptureState()
@@ -52,7 +52,7 @@ namespace RPG.Core
         public void RestoreState(object state)
         {
             hps = (float)state;
-            if (hps == 0)
+            if (hps == 0)                
             {
                 Die();
             }

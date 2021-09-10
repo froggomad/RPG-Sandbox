@@ -13,11 +13,22 @@ namespace RPG.Combat
         [SerializeField]
         private float weaponDamage = 5f;
 
+        [SerializeField]
+        private Transform handTransform = null;
+
+        [SerializeField]
+        private Weapon weapon = null;
+
         public Health target;
         float timeSinceLastAttack = Mathf.Infinity;
 
         public static string attackTriggerName = "attack";        
         public static string stopAttackName = "stopAttack";
+
+        private void Start()
+        {
+            SpawnWeapon();
+        }
 
         private void Update()
         {
@@ -35,6 +46,14 @@ namespace RPG.Combat
                 AttackBehavior();
             }
         }
+
+        private void SpawnWeapon()
+        {
+            if (weapon == null) { return; }
+            Animator animator = GetComponent<Animator>();
+            weapon.Spawn(handTransform, animator);
+        }
+
         // MARK: Hit Event Trigger
         private void AttackBehavior()
         {            
@@ -89,5 +108,7 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger(Fighter.stopAttackName);
             GetComponent<Animator>().ResetTrigger(Fighter.attackTriggerName);
         }
+
+
     }
 }

@@ -11,6 +11,14 @@ namespace RPG.Cutscenes
 
         private bool isTriggered = false;
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GetComponent<PlayableDirector>().Stop();
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {            
             if (other.gameObject.tag == PlayerController.Tag)

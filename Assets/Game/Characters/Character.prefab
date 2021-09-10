@@ -48,6 +48,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -156,9 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8f8852531a24ea98407b62f852150c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
-  timeBetweenAttacks: 1
-  weaponDamage: 5
+  rightHandTransform: {fileID: 0}
+  leftHandTransform: {fileID: 0}
+  defaultWeapon: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &6679308334113916122
 MonoBehaviour:

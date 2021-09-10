@@ -37,7 +37,7 @@ namespace RPG.Control
         
         private void Start()
         {
-            player = GameObject.FindWithTag(PlayerController.Tag);
+            player = GameObject.FindWithTag(RPGSandboxIDs.PlayerTag);
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             

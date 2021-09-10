@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using RPG.Control;
+using RPG.Core;
 
 namespace RPG.Cutscenes
 {
@@ -21,7 +21,7 @@ namespace RPG.Cutscenes
 
         private void OnTriggerEnter(Collider other)
         {            
-            if (other.gameObject.tag == PlayerController.Tag)
+            if (other.gameObject.tag == RPGSandboxIDs.PlayerTag)
             {
                 
                 if (!isTriggered)

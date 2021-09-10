@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using RPG.Control;
+using RPG.Core;
 
 namespace RPG.SceneManagement
 {
@@ -36,7 +37,7 @@ namespace RPG.SceneManagement
 
         private void OnTriggerEnter(Collider other)
         {
-            GameObject player = GameObject.FindGameObjectWithTag(PlayerController.Tag);
+            GameObject player = GameObject.FindGameObjectWithTag(RPGSandboxIDs.PlayerTag);
             if (other.gameObject == player) {
                 StartCoroutine(Transition());
             }
@@ -77,7 +78,7 @@ namespace RPG.SceneManagement
 
         private void UpdatePlayer(Portal otherPortal)
         {
-            GameObject player = GameObject.FindGameObjectWithTag(PlayerController.Tag);            
+            GameObject player = GameObject.FindGameObjectWithTag(RPGSandboxIDs.PlayerTag);            
             player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.position);
             player.transform.rotation = otherPortal.spawnPoint.rotation;            
         }

@@ -7,8 +7,7 @@ using System;
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
-    {
-        public static string Tag { get { return "Player"; } }
+    {        
         private Health health;
 
         private void Start()

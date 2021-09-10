@@ -152,7 +152,10 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1.1170568, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -290,9 +293,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &454989732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +383,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9505156, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &341598437695663985 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 403948, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 341598437695522461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &341598437695590169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
@@ -457,6 +465,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7876289547590599654, guid: c2c6060b9b74a49df964d066a9491f5b, type: 3}
     - target: {fileID: 5882445380969720739, guid: a383fbea833984d0aa8b3d40b3ee585c, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b4c80256286941e79921dd02b6590bf, type: 2}
+    - target: {fileID: 5882445380969720739, guid: a383fbea833984d0aa8b3d40b3ee585c, type: 3}
       propertyPath: handTransform
       value: 
       objectReference: {fileID: 341598437695590169}
@@ -464,6 +476,14 @@ PrefabInstance:
       propertyPath: weaponOverride
       value: 
       objectReference: {fileID: 22100000, guid: 7317c4f7315144a56af599420a4dd80b, type: 2}
+    - target: {fileID: 5882445380969720739, guid: a383fbea833984d0aa8b3d40b3ee585c, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 341598437695663985}
+    - target: {fileID: 5882445380969720739, guid: a383fbea833984d0aa8b3d40b3ee585c, type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 341598437695590169}
     - target: {fileID: 6675820237594506060, guid: a383fbea833984d0aa8b3d40b3ee585c, type: 3}
       propertyPath: hps
       value: 20

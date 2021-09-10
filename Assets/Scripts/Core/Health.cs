@@ -8,8 +8,6 @@ namespace RPG.Core
     public class Health : MonoBehaviour, ISaveable
     {
         private bool isDead = false;
-        public const string dieTriggerName = "die";
-
         ActionScheduler actionScheduler;
 
         private void Awake()
@@ -41,7 +39,7 @@ namespace RPG.Core
             if (isDead) return;
             actionScheduler.CancelCurrentAction();
             isDead = true;
-            GetComponent<Animator>().SetTrigger(dieTriggerName);
+            GetComponent<Animator>().SetTrigger(RPGSandboxIDs.DieTriggerName);
         }
 
         public object CaptureState()

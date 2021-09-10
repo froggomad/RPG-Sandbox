@@ -15,7 +15,7 @@ namespace RPG.Cutscenes
         {
             GetComponent<PlayableDirector>().played += DisableControl;
             GetComponent<PlayableDirector>().stopped += EnableControl;
-            player = GameObject.FindWithTag(PlayerController.Tag);
+            player = GameObject.FindWithTag(RPGSandboxIDs.PlayerTag);
         }
 
         void DisableControl(PlayableDirector director)

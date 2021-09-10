@@ -5,25 +5,26 @@ using RPG.Core;
 namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction
-    {        
+    {
         [SerializeField]
-        private float timeBetweenAttacks = 1f;
+        private Transform rightHandTransform = null;
+        [SerializeField]
+        private Transform leftHandTransform = null;
 
         [SerializeField]
-        private Transform handTransform = null;
-
-        [SerializeField]
-        private Weapon weapon = null;
+        private Weapon defaultWeapon = null;
 
         public Health target;
         float timeSinceLastAttack = Mathf.Infinity;
+
+        Weapon currentWeapon = null;
 
         public static string attackTriggerName = "attack";        
         public static string stopAttackName = "stopAttack";
 
         private void Start()
         {
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
         private void Update()
@@ -33,7 +34,7 @@ namespace RPG.Combat
             if (target == null || target.IsDead()) return;
 
             if (!GetIsInRange())
-            {                
+            {
                 GetComponent<Mover>().MoveTo(target.transform.position, 1f);
             }
             else
@@ -43,18 +44,18 @@ namespace RPG.Combat
             }
         }
 
-        private void SpawnWeapon()
+        public void EquipWeapon(Weapon weapon)
         {
-            if (weapon == null) { return; }
+            currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         // MARK: Hit Event Trigger
         private void AttackBehavior()
         {            
             transform.LookAt(target.transform);
-            if (timeSinceLastAttack > timeBetweenAttacks)
+            if (timeSinceLastAttack > currentWeapon.timeBetweenAttacks)
             {
                 TriggerAttack();
                 timeSinceLastAttack = 0;
@@ -80,12 +81,12 @@ namespace RPG.Combat
         {
             if (target == null) { return; }
 
-            target.TakeDamage(weapon.WeaponDamage());
+            target.TakeDamage(currentWeapon.WeaponDamage());
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weapon.WeaponRange();
+            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.WeaponRange();
         }
 
         public void Attack(GameObject combatTarget)

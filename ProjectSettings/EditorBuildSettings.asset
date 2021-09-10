@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scripts/Combat/Scenes/LootedHome.unity
+    path: Assets/Scenes/LootedHome.unity
     guid: 831a4e9d04fcb4cac94d8e547a8cc608
   - enabled: 1
-    path: Assets/Scripts/Combat/Scenes/Forest.unity
+    path: Assets/Scenes/Forest.unity
     guid: 7445f1a4764ce46beb3fddd7a7245c9c
   - enabled: 1
-    path: Assets/Scripts/Combat/Scenes/Home.unity
+    path: Assets/Scenes/Home.unity
     guid: 744aac14e6cc240918235641d0439b5e
   m_configObjects: {}

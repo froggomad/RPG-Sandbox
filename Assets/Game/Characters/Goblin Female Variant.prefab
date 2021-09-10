@@ -61,6 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d48e97c38730e6d4a8a87d44d568bc50, type: 3}
+--- !u!4 &713514912594946588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485660, guid: d48e97c38730e6d4a8a87d44d568bc50, type: 3}
+  m_PrefabInstance: {fileID: 713514912595116800}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &958253578013352004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,7 +75,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 84638844908227521, guid: 65c39e7c97cbb4e28ba4c3355f75b759, type: 3}
       propertyPath: m_Name
-      value: Goblin Female
+      value: Goblin Female Variant
       objectReference: {fileID: 0}
     - target: {fileID: 367454311539731495, guid: 65c39e7c97cbb4e28ba4c3355f75b759, type: 3}
       propertyPath: m_RootOrder
@@ -120,6 +125,14 @@ PrefabInstance:
       propertyPath: uniqueIdentifier
       value: 8b90fa50-d339-457c-8ce0-c8a7291aba1f
       objectReference: {fileID: 0}
+    - target: {fileID: 1703920162144523717, guid: 65c39e7c97cbb4e28ba4c3355f75b759, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b4c80256286941e79921dd02b6590bf, type: 2}
+    - target: {fileID: 1703920162144523717, guid: 65c39e7c97cbb4e28ba4c3355f75b759, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 713514912594946588}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c39e7c97cbb4e28ba4c3355f75b759, type: 3}
 --- !u!4 &600407233019858019 stripped

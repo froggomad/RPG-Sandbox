@@ -65,6 +65,7 @@ namespace RPG.SceneManagement
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
+
             saver.Save();
 
             yield return new WaitForSeconds(waitTime);

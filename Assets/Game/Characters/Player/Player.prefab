@@ -155,7 +155,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.1170568, y: 1}
+    m_SensorSize: {x: 1.0906041, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -467,7 +467,7 @@ PrefabInstance:
     - target: {fileID: 5882445380969720739, guid: a383fbea833984d0aa8b3d40b3ee585c, type: 3}
       propertyPath: defaultWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 7b4c80256286941e79921dd02b6590bf, type: 2}
+      objectReference: {fileID: 11400000, guid: d9c41d7f9f8314bce88e3b5a3e9dd1a9, type: 2}
     - target: {fileID: 5882445380969720739, guid: a383fbea833984d0aa8b3d40b3ee585c, type: 3}
       propertyPath: handTransform
       value: 

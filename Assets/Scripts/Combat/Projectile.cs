@@ -13,11 +13,9 @@ namespace RPG.Combat
         float damage = 4f;
 
         private void OnTriggerEnter(Collider other)
-        {
-            if (other.GetComponent<Health>() == target)
-            {
-                target.TakeDamage(damage);
-            }
+        {            
+            if (other.GetComponent<Health>() != target) { return; }            
+            target.TakeDamage(damage);            
             Destroy(gameObject);
         }
 
@@ -25,7 +23,6 @@ namespace RPG.Combat
         void Update()
         {
             if (target == null) { return; }
-
             transform.LookAt(GetAimLocation());
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }

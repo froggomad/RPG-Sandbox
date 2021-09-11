@@ -12,7 +12,6 @@ namespace RPG.Core
 
         private void Awake()
         {
-            Debug.Log(Application.persistentDataPath);
             actionScheduler = GetComponent<ActionScheduler>();
         }
 

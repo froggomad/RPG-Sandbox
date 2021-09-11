@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
+using System;
 
 namespace RPG.Combat
 {
@@ -11,7 +12,7 @@ namespace RPG.Combat
         [SerializeField]
         private AnimatorOverrideController animatorOverride = null;
         [SerializeField]
-        private GameObject weaponPrefab = null;
+        private GameObject equippedPrefab = null;
 
         [SerializeField]
         private float weaponRange = 2f;
@@ -27,9 +28,16 @@ namespace RPG.Combat
 
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
-            if (weaponPrefab != null)
+            DestroyOldWeapon(rightHand, leftHand);
+
+            if (equippedPrefab != null)
             {
-                Instantiate(weaponPrefab, GetTransform(rightHand, leftHand));
+                Transform handTransform = GetTransform(rightHand, leftHand);
+                GameObject weapon = Instantiate(equippedPrefab, handTransform);
+                weapon.name = RPGSandboxIDs.WeaponName;
+            } else
+            {
+                Debug.Log("equippedPrefab is null");
             }
 
             if (animatorOverride != null)
@@ -37,6 +45,19 @@ namespace RPG.Combat
                 animator.runtimeAnimatorController = animatorOverride;
             }
             
+        }
+
+        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        {
+            Transform previousWeapon = rightHand.Find(RPGSandboxIDs.WeaponName);
+            if (previousWeapon == null)
+            {
+                previousWeapon = leftHand.Find(RPGSandboxIDs.WeaponName);                
+            }            
+            if (previousWeapon == null) { return; }
+            Debug.Log("previous weapon: " + previousWeapon.name);
+            previousWeapon.name = "DESTROYED";
+            Destroy(previousWeapon.gameObject);
         }
 
         private Transform GetTransform(Transform rightHand, Transform leftHand)
